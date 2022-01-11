@@ -20,18 +20,6 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 This is the configurations set used by Zextras Carbonio ui projects
 
-<h2>Contributing</h2> 
-
-All contributions are accepted! Please refer to the CONTRIBUTING file, if
-present, for more details on how to contribute. If the repository has a Code of
-Conduct, we kindly ask to follow that one too.
-
-<h3>How to build</h3>
-
-{{ .build }}
-
-{{ .additionalReferences }}
-
 <h2>License</h2>
 
-Released under the AGPL-3.0-only license as specified here: LICENSES/AGPL-3.0-only.txt.
+Released under the AGPL-3.0-only license as specified in [COPYING](COPYING).
