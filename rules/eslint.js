@@ -22,7 +22,10 @@ module.exports = {
 		'react-hooks',
 		'jest',
 		'jsx-a11y',
-		'prettier'
+		'prettier',
+		'unused-imports',
+		'jest-dom',
+		'testing-library'
 	],
 	extends: [
 		'eslint:recommended',
@@ -49,7 +52,8 @@ module.exports = {
 			}
 		],
 		'no-extra-semi': 'off',
-		'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['state', 'r'] }],
+		// in order to allow reassignment of specific param, override this rule using ignorePropertyModificationsFor option
+		'no-param-reassign': 'error',
 		'no-tabs': 'off',
 		'no-underscore-dangle': 'off',
 		'no-unused-expressions': [
@@ -66,7 +70,6 @@ module.exports = {
 		'@typescript-eslint/explicit-function-return-type': 'off',
 		'@typescript-eslint/explicit-module-boundary-types': 'off',
 		'@typescript-eslint/interface-name-prefix': 'off',
-		'@typescript-eslint/no-unused-vars': 'warn',
 		'@typescript-eslint/no-use-before-define': 'error',
 		'@typescript-eslint/prefer-interface': 'off',
 		// import
@@ -100,7 +103,35 @@ module.exports = {
 			{
 				extensions: ['.jsx', '.tsx']
 			}
-		]
+		],
+		'import/order': [
+			'error',
+			{
+				groups: [['builtin', 'external']],
+				pathGroups: [
+					{
+						pattern: 'react',
+						group: 'external',
+						position: 'before'
+					}
+				],
+				pathGroupsExcludedImportTypes: ['react'],
+				'newlines-between': 'always',
+				alphabetize: {
+					order: 'asc',
+					caseInsensitive: true
+				}
+			}
+		],
+		'@typescript-eslint/no-unused-vars': 'warn',
+		'unused-imports/no-unused-imports': 'error',
+		'unused-imports/no-unused-vars': [
+			'warn',
+			{ vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' }
+		],
+		'no-shadow': 'off',
+		'@typescript-eslint/no-shadow': ['error'],
+		'no-console': ['warn', { allow: ['error'] }]
 	},
 	overrides: [
 		{
@@ -117,6 +148,18 @@ module.exports = {
 			rules: {
 				'@typescript-eslint/no-var-requires': 0
 			}
-		}
+		},
+		{
+			// enable eslint-plugin-testing-library rules or preset only for test files
+			files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+			extends: ['plugin:jest-dom/recommended', 'plugin:testing-library/react'],
+			rules: {
+				'jest-dom/prefer-enabled-disabled': 'off',
+				'testing-library/no-unnecessary-act': 'warn',
+				'testing-library/no-global-regexp-flag-in-query': 'error',
+				'testing-library/prefer-user-event': 'warn',
+				'import/no-extraneous-dependencies': 'off'
+			}
+		},
 	]
 };
