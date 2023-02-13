@@ -52,7 +52,7 @@ module.exports = {
 			}
 		],
 		'no-extra-semi': 'off',
-		// in order to allow reassignment of specific param, override this rule using ignorePropertyModificationsFor option
+		// in order to allow reassignment of specific param, override this rule using options props: true and ignorePropertyModificationsFor
 		'no-param-reassign': 'error',
 		'no-tabs': 'off',
 		'no-underscore-dangle': 'off',
