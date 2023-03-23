@@ -3,7 +3,7 @@
   "version": "0.1.11",
   "description": "Zextras Web configs",
   "scripts": {
-    "release": "standard-version"
+    "prepare": "is-ci || husky install"
   },
   "files": [
     "rules/"
@@ -15,7 +15,9 @@
   "author": "Zextras DL Team <https://www.zextras.com/carbonio/>",
   "license": "AGPL-3.0-only",
   "devDependencies": {
-    "standard-version": "^9.5.0"
+    "@commitlint/config-conventional": "^17.4.4",
+    "husky": "^8.0.3",
+    "is-ci": "^3.0.1"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.50.0",
