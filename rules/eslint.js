@@ -25,7 +25,8 @@ module.exports = {
 		'prettier',
 		'unused-imports',
 		'jest-dom',
-		'testing-library'
+		'testing-library',
+		'sonarjs'
 	],
 	extends: [
 		'eslint:recommended',
@@ -35,7 +36,8 @@ module.exports = {
 		'plugin:react/recommended',
 		'plugin:react-hooks/recommended',
 		'plugin:jsx-a11y/recommended',
-		'prettier'
+		'prettier',
+		'plugin:sonarjs/recommended'
 	],
 	rules: {
 		// Vanilla rules
