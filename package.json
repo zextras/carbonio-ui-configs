@@ -15,7 +15,7 @@
   "author": "Zextras DL Team <https://www.zextras.com/carbonio/>",
   "license": "AGPL-3.0-only",
   "devDependencies": {
-    "@commitlint/config-conventional": "^17.7.0",
+    "@commitlint/config-conventional": "^18.1.0",
     "husky": "^8.0.3",
     "is-ci": "^3.0.1"
   },
@@ -32,11 +32,11 @@
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react": "^7.33.1",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-sonarjs": "^0.20.0",
-    "eslint-plugin-testing-library": "^5.11.1",
+    "eslint-plugin-sonarjs": "^0.21.0",
+    "eslint-plugin-testing-library": "^6.1.0",
     "eslint-plugin-unused-imports": "^3.0.0",
     "prettier": "^3.0.1",
-    "prettier-eslint": "^15.0.1",
+    "prettier-eslint": "^16.1.2",
     "typescript": "^5.1.6"
   }
 }

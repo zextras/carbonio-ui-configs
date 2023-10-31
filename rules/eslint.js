@@ -158,7 +158,6 @@ module.exports = {
 			rules: {
 				'jest-dom/prefer-enabled-disabled': 'off',
 				'testing-library/no-unnecessary-act': 'warn',
-				'testing-library/no-global-regexp-flag-in-query': 'error',
 				'testing-library/prefer-user-event': 'warn',
 				'import/no-extraneous-dependencies': 'off'
 			}
