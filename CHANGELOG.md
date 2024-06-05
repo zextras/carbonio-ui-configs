@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/zextras/carbonio-ui-configs/compare/v1.0.0...v1.0.1) (2024-06-05)
+
+
+### Bug Fixes
+
+* update config to add esm support ([5d04d9d](https://github.com/zextras/carbonio-ui-configs/commit/5d04d9d31fe525c9955f724b4b8fee126a8fce0d)), closes [#17](https://github.com/zextras/carbonio-ui-configs/issues/17)
+
 ## [1.0.0](https://github.com/zextras/carbonio-ui-configs/compare/v0.1.13...v1.0.0) (2023-11-24)
 
 
