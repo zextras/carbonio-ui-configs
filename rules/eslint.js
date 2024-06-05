@@ -10,7 +10,14 @@ module.exports = {
 	settings: {
 		react: {
 			version: 'detect'
-		}
+		},
+		'import/resolver': {
+			typescript: true,
+			node: true
+		},
+		'import/parsers': {
+			"@typescript-eslint/parser": ['.ts', '.tsx']
+		},
 	},
 	env: {
 		browser: true,
@@ -18,29 +25,39 @@ module.exports = {
 	},
 	plugins: [
 		'@typescript-eslint/eslint-plugin',
-		'react',
-		'react-hooks',
-		'jest',
-		'jsx-a11y',
-		'prettier',
-		'unused-imports',
-		'jest-dom',
-		'testing-library',
-		'sonarjs'
+		'eslint-plugin-react',
+		'eslint-plugin-react-hooks',
+		'eslint-plugin-jest',
+		'eslint-plugin-jsx-a11y',
+		'eslint-plugin-prettier',
+		'eslint-plugin-unused-imports',
+		'eslint-plugin-jest-dom',
+		'eslint-plugin-testing-library',
+		'eslint-plugin-sonarjs'
 	],
 	extends: [
+		// npm package: eslint
 		'eslint:recommended',
+		// npm package: eslint-config-airbnb-base
 		'airbnb-base',
+		// plugin name: eslint-plugin-import
+		'plugin:import/recommended',
 		'plugin:import/typescript',
+		// plugin name: @typescript-eslint/eslint-plugin
 		'plugin:@typescript-eslint/recommended',
+		// plugin name: eslint-plugin-react
 		'plugin:react/recommended',
+		// plugin name: eslint-plugin-react-hooks
 		'plugin:react-hooks/recommended',
+		// plugin name: eslint-plugin-jsx-a11y
 		'plugin:jsx-a11y/recommended',
+		// npm package: eslint-config-prettier
 		'prettier',
+		// plugin name: eslint-plugin-sonarjs
 		'plugin:sonarjs/recommended'
 	],
 	rules: {
-		// Vanilla rules
+		// eslint rules
 		'brace-style': ['error', '1tbs', { allowSingleLine: true }],
 		'comma-dangle': 'off',
 		'implicit-arrow-linebreak': 'off',
@@ -68,13 +85,17 @@ module.exports = {
 		'no-use-before-define': 'off',
 		semi: ['error', 'always'],
 		'prefer-arrow-callback': 'off',
-		// @typescript-eslint
+		'no-shadow': 'off',
+		'no-console': ['warn', { allow: ['error'] }],
+		// @typescript-eslint/eslint-plugin
 		'@typescript-eslint/explicit-function-return-type': 'off',
 		'@typescript-eslint/explicit-module-boundary-types': 'off',
 		'@typescript-eslint/interface-name-prefix': 'off',
 		'@typescript-eslint/no-use-before-define': 'error',
 		'@typescript-eslint/prefer-interface': 'off',
-		// import
+		'@typescript-eslint/no-unused-vars': 'warn',
+		'@typescript-eslint/no-shadow': ['error'],
+		// eslint-plugin-import
 		'import/export': 'off',
 		'import/extensions': [
 			'error',
@@ -90,22 +111,6 @@ module.exports = {
 		'import/named': 'off',
 		'import/no-extraneous-dependencies': 'warn',
 		'import/prefer-default-export': 'off',
-		// prettier
-		'prettier/prettier': 'error',
-		// react-hooks
-		'react-hooks/exhaustive-deps': 'error',
-		'react-hooks/rules-of-hooks': 'error',
-		// react
-		'react/jsx-boolean-value': 1,
-		'react/jsx-indent-props': ['error', 'tab'],
-		'react/jsx-indent': ['error', 'tab'],
-		'react/prop-types': 'off',
-		'react/jsx-filename-extension': [
-			'warn',
-			{
-				extensions: ['.jsx', '.tsx']
-			}
-		],
 		'import/order': [
 			'error',
 			{
@@ -125,15 +130,28 @@ module.exports = {
 				}
 			}
 		],
-		'@typescript-eslint/no-unused-vars': 'warn',
+		// eslint-plugin-prettier
+		'prettier/prettier': 'error',
+		// eslint-plugin-react-hooks
+		'react-hooks/exhaustive-deps': 'error',
+		'react-hooks/rules-of-hooks': 'error',
+		// eslint-plugin-react
+		'react/jsx-boolean-value': 1,
+		'react/jsx-indent-props': ['error', 'tab'],
+		'react/jsx-indent': ['error', 'tab'],
+		'react/prop-types': 'off',
+		'react/jsx-filename-extension': [
+			'warn',
+			{
+				extensions: ['.jsx', '.tsx']
+			}
+		],
+		// eslint-plugin-unused-imports
 		'unused-imports/no-unused-imports': 'error',
 		'unused-imports/no-unused-vars': [
 			'warn',
 			{ vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' }
-		],
-		'no-shadow': 'off',
-		'@typescript-eslint/no-shadow': ['error'],
-		'no-console': ['warn', { allow: ['error'] }]
+		]
 	},
 	overrides: [
 		{
@@ -146,14 +164,8 @@ module.exports = {
 			}
 		},
 		{
-			files: ['sdk/**/*'],
-			rules: {
-				'@typescript-eslint/no-var-requires': 0
-			}
-		},
-		{
 			// enable eslint-plugin-testing-library rules or preset only for test files
-			files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+			files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)', '**/tests/**/*.[jt]s?(x)'],
 			extends: ['plugin:jest-dom/recommended', 'plugin:testing-library/react'],
 			rules: {
 				'jest-dom/prefer-enabled-disabled': 'off',
