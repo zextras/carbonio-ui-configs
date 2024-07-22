@@ -1,6 +1,6 @@
 {
   "name": "@zextras/carbonio-ui-configs",
-  "version": "1.0.1",
+  "version": "0.0.0-semantically-released",
   "description": "Zextras Web configs",
   "scripts": {
     "prepare": "is-ci || husky install"
@@ -14,10 +14,16 @@
   ],
   "author": "Zextras DL Team <https://www.zextras.com/carbonio/>",
   "license": "AGPL-3.0-only",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zextras/carbonio-ui-configs.git"
+  },
   "devDependencies": {
     "@commitlint/config-conventional": "^18.1.0",
+    "conventional-changelog-conventionalcommits": "^8.0.0",
     "husky": "^8.0.3",
-    "is-ci": "^3.0.1"
+    "is-ci": "^3.0.1",
+    "semantic-release": "^24.0.0"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^6.3.0",
