@@ -21,7 +21,6 @@ def nodeCmd(String cmd) {
     sh '. load_nvm && nvm install && nvm use && npm ci && ' + cmd
 }
 
-
 void npmLogin(String npmAuthToken) {
     if (!fileExists(file: '.npmrc')) {
         sh(
