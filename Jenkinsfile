@@ -17,23 +17,8 @@ String getLastTag() {
 }
 
 // node utils
-void nodeCmd(Map args = [:]) {
-    final boolean install = (args.install != null) ? args.install : false
-    def varEnv = []
-    ((args.varEnv != null) ? args.varEnv : []).each { k, v -> varEnv.push("$k=$v") }
-    String version
-    if (fileExists('.nvmrc')) {
-        version = ''
-    } else {
-        version = (args.version != null) ? "${args.version} " : '16'
-    }
-    sh(
-        script: """#!/usr/bin/env bash
-            ${varEnv.join(' ')} source load_nvm && nvm install ${version} && nvm use ${version} \
-            ${install ? '&& npm ci ' : ''} \
-            ${args.script != null ? "&& ${args.script} " : ''} \
-        """
-    )
+def nodeCmd(String cmd) {
+    sh '. load_nvm && nvm install && nvm use && npm ci && ' + cmd
 }
 
 
@@ -90,21 +75,6 @@ pipeline {
                     isReleaseBranch = "${BRANCH_NAME}" ==~ /release/
                     echo "isReleaseBranch: ${isReleaseBranch}"
                 }
-                withCredentials([
-                    usernamePassword(
-                        credentialsId: "npm-zextras-bot-auth-token",
-                        usernameVariable: "NPM_USERNAME",
-                        passwordVariable: "NPM_PASSWORD"
-                    )
-                ]) {
-                    script {
-                        npmLogin(NPM_PASSWORD)
-                    }
-                }
-                stash(
-                    includes: ".npmrc",
-                    name: ".npmrc"
-                )
             }
         }
 
