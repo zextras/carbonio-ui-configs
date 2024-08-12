@@ -16,6 +16,17 @@ String getLastTag() {
     ''', returnStdout: true).trim()
 }
 
+Boolean tagExistsAtHead() {
+    try {
+        sh(script: '''#!/bin/bash
+            git describe --tags --exact-match
+        ''', returnStdout: true)
+        return true
+    } catch (err) {
+        return false
+    }
+}
+
 // node utils
 def nodeCmd(String cmd) {
     sh '. load_nvm && nvm install && nvm use && npm ci && ' + cmd
@@ -102,6 +113,7 @@ pipeline {
                 beforeAgent true
                 allOf {
                     expression { isReleaseBranch == true }
+                    expression { tagExistsAtHead() == true }
                 }
             }
             steps {
