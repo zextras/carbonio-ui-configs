@@ -93,7 +93,8 @@ module.exports = {
 		'@typescript-eslint/interface-name-prefix': 'off',
 		'@typescript-eslint/no-use-before-define': 'error',
 		'@typescript-eslint/prefer-interface': 'off',
-		'@typescript-eslint/no-unused-vars': 'warn',
+		// disabled in favor of unused-imports/no-unused-vars rule
+		'@typescript-eslint/no-unused-vars': 'off',
 		'@typescript-eslint/no-shadow': ['error'],
 		// eslint-plugin-import
 		'import/export': 'off',
