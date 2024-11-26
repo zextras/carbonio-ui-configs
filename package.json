@@ -3,7 +3,7 @@
   "version": "0.0.0-semantically-released",
   "description": "Zextras Web configs",
   "scripts": {
-    "prepare": "is-ci || husky install"
+    "prepare": "is-ci || husky"
   },
   "files": [
     "rules/"
@@ -19,9 +19,10 @@
     "url": "git+https://github.com/zextras/carbonio-ui-configs.git"
   },
   "devDependencies": {
-    "@commitlint/config-conventional": "^18.1.0",
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
     "conventional-changelog-conventionalcommits": "^8.0.0",
-    "husky": "^8.0.3",
+    "husky": "^9.1.6",
     "is-ci": "^3.0.1",
     "semantic-release": "^24.0.0"
   },
