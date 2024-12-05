@@ -46,7 +46,7 @@ In order to make eslint recognize the plugins configured within this package, an
 parameter is required when running eslint command: `--resolve-plugins-relative-to node_modules/@zextras/carbonio-ui-configs`
 
 You can configure a script inside the package.json and then run `npm run lint` to easily run eslint with the required configuration:
-```json lines
+```json5 lines
 // package.json
 {
     "scripts": {
@@ -74,13 +74,13 @@ integrations.
 The configuration for the type-check is the rules/tsconfig.type-check.json and should be used as extension in the
 main tsconfig.json of the projects.
 
-```json lines
+```json5 lines
 // tsconfig.json
 {
   "extends": "@zextras/carbonio-ui-configs/rules/tsconfig.type-check.json"
 }
 ```
-```json lines
+```json5 lines
 // package.json
 {
   "scripts": {
@@ -93,12 +93,12 @@ main tsconfig.json of the projects.
 The second one, to generate a package type, is the rules/tsconfig.lib.json and should be used as an extension in a
 specific tsconfig (e.g. tsconfig.lib.json), which is then used in a build:lib script of the package.json
 
-```json lines
+```json5 lines
 // tsconfig.lib.json
 {
   "extends": "@zextras/carbonio-ui-configs/rules/tsconfig.lib.json",
   "compilerOptions": {
-    "types": ["node", /* add here additional types declarations, like styled-components.d.ts and i18next.d.ts */]
+    "types": ["node", /* add here additional types declarations, like styled-components.d.ts and i18next.d.ts */],
     "outDir": "lib"
   },
   "files": [
@@ -106,14 +106,14 @@ specific tsconfig (e.g. tsconfig.lib.json), which is then used in a build:lib sc
   ]
 }
 ```
-```json lines
+```json5 lines
 // package.json
 {
   "name": "@zextras/carbonio-<module>-ui",
   "files": ["lib", "THIRDPARTIES"],
   "exports": {
     ".": {
-      "types": "lib/<entry point>.d.ts" // e.g. lib/lib.d.ts if the entry point is src/lib.d.ts
+      "types": "lib/<entry point>.d.ts" // e.g. lib/lib.d.ts if the entry point is src/lib.ts
     },
     "./*": null
   },
