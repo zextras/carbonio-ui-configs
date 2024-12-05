@@ -67,15 +67,71 @@ module.exports = {
 ```
 
 ### Typescript
-Typescript configuration is located in `rules/typescript.json` and need to be extended too.
+There are two typescript configuration available, one for type-checking Carbonio modules projects, the other for creating
+the types for the integrations exported by the module, so that the types can be used by other projects to type the used
+integrations.
+
+The configuration for the type-check is the rules/tsconfig.type-check.json and should be used as extension in the
+main tsconfig.json of the projects.
 
 ```json lines
 // tsconfig.json
 {
-  "extends": "@zextras/carbonio-ui-configs/rules/typescript.json"
+  "extends": "@zextras/carbonio-ui-configs/rules/tsconfig.type-check.json"
+}
+```
+```json lines
+// package.json
+{
+  "scripts": {
+    // ... other scripts ...
+    "type-check": "tsc"
+  }
 }
 ```
 
+The second one, to generate a package type, is the rules/tsconfig.lib.json and should be used as an extension in a
+specific tsconfig (e.g. tsconfig.lib.json), which is then used in a build:lib script of the package.json
+
+```json lines
+// tsconfig.lib.json
+{
+  "extends": "@zextras/carbonio-ui-configs/rules/tsconfig.lib.json",
+  "compilerOptions": {
+    "types": ["node", /* add here additional types declarations, like styled-components.d.ts and i18next.d.ts */]
+    "outDir": "lib"
+  },
+  "files": [
+    // the entry point(s) for the integration exports, e.g. src/lib.ts
+  ]
+}
+```
+```json lines
+// package.json
+{
+  "name": "@zextras/carbonio-<module>-ui",
+  "files": ["lib", "THIRDPARTIES"],
+  "exports": {
+    ".": {
+      "types": "lib/<entry point>.d.ts" // e.g. lib/lib.d.ts if the entry point is src/lib.d.ts
+    },
+    "./*": null
+  },
+  "scripts": {
+    // ... other scripts ...
+    "build:lib": "rm -rf lib && tsc -P tsconfig.lib.json",
+    "prepare": "is-ci || (husky; npm run build:lib)"
+  }
+}
+```
+
+Remember to exclude the lib folder from git by adding an entry to the .gitignore
+```
+// .gitignore
+
+// ... other entries ...
+/lib
+```
 
 ## License
 Carbonio UI Configs - Configurations set for Zextras Carbonio UI projects
