@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "EsNext",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+
+    "module": "preserve",
+    "moduleResolution": "Bundler",
+    "noEmit": true,
+    "lib": ["esnext", "dom", "dom.iterable"],
+
+    "checkJs": false,
+    "jsx": "preserve",
+    "allowSyntheticDefaultImports": true
+  }
+}
