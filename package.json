@@ -21,12 +21,12 @@
     "url": "git+https://github.com/zextras/carbonio-ui-configs.git"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.6.1",
-    "@commitlint/config-conventional": "^19.6.0",
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
     "conventional-changelog-conventionalcommits": "^8.0.0",
     "husky": "^9.1.6",
     "is-ci": "^3.0.1",
-    "semantic-release": "^24.0.0"
+    "semantic-release": "^24.2.3"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^6.3.0",
@@ -38,14 +38,14 @@
     "eslint-plugin-import": "^2.28.0",
     "eslint-plugin-jest": "^27.2.3",
     "eslint-plugin-jest-dom": "^5.5.0",
-    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-sonarjs": "^0.21.0",
     "eslint-plugin-testing-library": "^7.1.1",
     "eslint-plugin-unused-imports": "^3.0.0",
-    "prettier": "^3.0.1",
+    "prettier": "^3.5.3",
     "prettier-eslint": "^16.1.2",
     "typescript": "^5.7.2"
   },
