@@ -120,7 +120,7 @@ specific tsconfig (e.g. tsconfig.lib.json), which is then used in a build:lib sc
   "scripts": {
     // ... other scripts ...
     "build:lib": "rm -rf lib && tsc -P tsconfig.lib.json",
-    "prepare": "is-ci || (husky; npm run build:lib)"
+    "prepare": "(is-ci || husky); npm run build:lib"
   }
 }
 ```
