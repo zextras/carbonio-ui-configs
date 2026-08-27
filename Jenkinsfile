@@ -3,6 +3,14 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
+library(
+    identifier: 'jenkins-lib-common@v4.10.0',
+    retriever: modernSCM([
+        $class: 'GitSCMSource',
+        remote: 'git@github.com:zextras/jenkins-lib-common.git',
+        credentialsId: 'jenkins-integration-with-github-account'
+    ])
+)
 
 String getDefaultBranch() {
     return sh(script: '''
@@ -66,6 +74,7 @@ pipeline {
     options {
         timeout(time: 20, unit: "MINUTES")
         buildDiscarder(logRotator(numToKeepStr: "50"))
+        disableConcurrentBuilds()
     }
     post {
         always {
@@ -160,4 +169,3 @@ pipeline {
         }
     }
 }
-
