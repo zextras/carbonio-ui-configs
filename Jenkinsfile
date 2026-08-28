@@ -65,6 +65,8 @@ Boolean isPullRequest
 Boolean isReleaseBranch
 String nodeVersion
 
+properties(defaultPipelineProperties())
+
 pipeline {
     agent {
         node {
