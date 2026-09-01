@@ -8,7 +8,7 @@ export default {
   branches: [
     'release',
     {
-      name: 'devel',
+      name: 'main',
       prerelease: true
     }
   ],
