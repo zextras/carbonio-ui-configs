@@ -4,6 +4,12 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
+String getDefaultBranch() {
+    return sh(script: '''
+        git ls-remote --symref origin HEAD | awk '/^ref:/ {sub("refs/heads/","",$2); print $2; exit}'
+    ''', returnStdout: true).trim()
+}
+
 String getRepositoryName() {
     return sh(script: '''
         git remote -v | head -n1 | cut -d$'\t' -f2 | cut -d' ' -f1 | sed -e 's!https://github.com/!!g' -e 's!git@github.com:!!g' -e 's!.git!!g'
@@ -120,7 +126,7 @@ pipeline {
                 }
             }
         }
-        stage('Open release to devel pull request') {
+        stage('Open release to default-branch pull request') {
             when {
                 allOf {
                     expression { isReleaseBranch == true }
@@ -143,7 +149,7 @@ pipeline {
                                 -d '{
                                     \"title\": \"chore(release): ${getLastTag()}\",
                                     \"head\": \"${versionBumperBranchName}\",
-                                    \"base\": \"devel\",
+                                    \"base\": \"${getDefaultBranch()}\",
                                     \"maintainer_can_modify\": true
                                 }'
                             """)
