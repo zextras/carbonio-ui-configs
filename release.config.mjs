@@ -24,6 +24,8 @@ export default {
           // enable release also for refactor and build commits
           { type: 'refactor', release: 'patch' },
           { type: 'build', release: 'patch' },
+          { type: 'ci', release: 'patch' },
+          { type: 'perf', release: 'patch' },
         ],
       }
     ],
