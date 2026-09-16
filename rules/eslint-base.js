@@ -74,13 +74,8 @@ module.exports = {
 		'no-param-reassign': 'error',
 		'no-tabs': 'off',
 		'no-underscore-dangle': 'off',
-		'no-unused-expressions': [
-			'warn',
-			{
-				allowShortCircuit: true,
-				allowTernary: true
-			}
-		],
+		// disabled in favor of @typescript-eslint/no-unused-expressions
+		'no-unused-expressions': 'off',
 		'no-use-before-define': 'off',
 		semi: ['error', 'always'],
 		'prefer-arrow-callback': 'off',
@@ -95,6 +90,13 @@ module.exports = {
 		// disabled in favor of unused-imports/no-unused-vars rule
 		'@typescript-eslint/no-unused-vars': 'off',
 		'@typescript-eslint/no-shadow': ['error'],
+		'@typescript-eslint/no-unused-expressions': [
+			'warn',
+			{
+				allowShortCircuit: true,
+				allowTernary: true
+			}
+		],
 		// eslint-plugin-import
 		'import/export': 'off',
 		'import/extensions': [
