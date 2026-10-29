@@ -47,9 +47,9 @@
     "eslint-plugin-unused-imports": "4.4.1",
     "prettier": "3.9.7",
     "prettier-eslint": "16.4.2",
-    "typescript": "5.9.3"
+    "typescript": "7.0.2"
   },
   "peerDependencies": {
-    "typescript": ">=5.4.0 <6.1.0"
+    "typescript": ">=5.4.0 <7.1.0"
   }
 }
