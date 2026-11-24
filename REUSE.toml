@@ -3,7 +3,7 @@ SPDX-PackageName = "carbonio-ui-configs"
 SPDX-PackageSupplier = "Zextras <https://www.zextras.com>"
 
 [[annotations]]
-path = ["package.json", "package-lock.json", "THIRDPARTIES", ".nvmrc", ".husky/**", ".github/**", "CHANGELOG.md", "**/tsconfig**.json"]
+path = ["package.json", "package-lock.json", "THIRDPARTIES", ".nvmrc", ".husky/**", ".github/**", "CHANGELOG.md", "**/tsconfig**.json", "rules/renovate.json"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2023 Zextras <https://www.zextras.com>"
 SPDX-License-Identifier = "CC0-1.0"
