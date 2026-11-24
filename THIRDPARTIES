@@ -16,7 +16,6 @@ eslint-plugin-unused-imports, Copyright (c) 2022 Mikkel Holmer Pedersen
 eslint, Copyright OpenJS Foundation and other contributors, <www.openjsf.org>
 husky, Copyright (c) 2021 typicode
 is-ci, Copyright (c) 2016-2021 Thomas Watson Steen
-prettier-eslint, Copyright (c) 2016 Kent C. Dodds
 prettier, Copyright © James Long and contributors
 
 MIT License
